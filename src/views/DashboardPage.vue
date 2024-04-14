@@ -3,6 +3,7 @@
 
 export default {	
 	components: {
+
 	},
 	data() {
 		return {
@@ -111,10 +112,6 @@ img{
 	border-radius: 20px
 }
 
-.padding{
-	font-size: 50px;
-}
-
 .red{
  background-color: #E63349;
  color: white;
@@ -138,16 +135,31 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
-.space{
-margin-right: 101px;
+.sideMenu{
+	background-color: #1DA4FB;
+	min-height: 745px;
+	width: 15%;
+	float: left;
 }
 
-.space1{
-margin-right: 170px;
+.button{
+	width: 100%;
+	height: 50px;
+	margin-top: 10%;
+	background-color: #1DA4FB;
+	color: #FFF;
+	font-size: 20px;
+	border: none;
 }
 
-.space2{
-margin-right: 130px;
+.button > a{
+	text-decoration: none;
+	color: #FFF;
+}
+
+.body{
+	width: 85%;
+	float: right;
 }
 
 .col{
@@ -241,4 +253,5 @@ display: flex;
 justify-content: center;
 align-items: center;
 }
+
 </style>
