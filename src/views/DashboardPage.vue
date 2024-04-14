@@ -1,17 +1,11 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script lang="ts">
-//import Vue from 'vue';
-//import Youtube from 'vue-youtube';
-
-//Vue.use(Youtube);
 
 export default {	
 	components: {
-//		Youtube
 	},
 	data() {
 		return {
-			videoId: 'https://youtu.be/ItFi-eomRI8?si=fO1l5LArikf_DmVi'
 		};
 	},
 	methods: {
@@ -103,14 +97,19 @@ export default {
 				</label>
 			</div>
 			<div class="box1">
-				<label class="center" for="">Tela de monitoramento em tempo real</label>
-				<youtube :video-id="videoId" :autoplay="true" width="600"></youtube>
+				<img class="img" src="../../Cam.ico" alt="">
 			</div>
 		</div>
 	</div>
 </template>
 
 <style scoped>
+
+img{
+	height: 260px;
+	width: 540px;
+	border-radius: 20px
+}
 
 .padding{
 	font-size: 50px;
