@@ -1,15 +1,14 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-
   <div class="header">
-				<img class="logo" src="../../favicon.ico" alt="Logo guardian" />
+    <img class="logo" src="../../altaveC.ico" alt="Logo Altave" />
   </div>
 </template>
 
 <style scoped>
 .header {
-  background-color: black;
-  height: 3rem;
+  background-color: #5291d6;
+  height: 4rem;
   width: 100%;
   display: flex;
   justify-content: start; /* Alinhamento horizontal */
@@ -17,8 +16,7 @@
 }
 .logo {
   text-align: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  margin-left: 10px;
+  width: 170px;
+  height: 65px;
 }
 </style>
