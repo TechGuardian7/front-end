@@ -64,8 +64,6 @@ export default {
         <button class=" button2 space">CSV</button>
         <button class="button3 space">PDF</button>
       </div>
-      
-
     </div>
   </div>
 </template>
@@ -139,7 +137,6 @@ export default {
   width: 150px;
   border-color: #000;
 }
-
 .button > a {
   text-decoration: none;
   color: #fff;
