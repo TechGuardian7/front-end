@@ -95,8 +95,7 @@ export default {
           <p>0</p>
         </label>
       </div>
-      <div class="box1">
-        <img class="img" src="../../Cam.ico" alt="" />
+      <div class="box3">
       </div>
     </div>
   </div>
@@ -210,7 +209,19 @@ tr:nth-child(even) {
   border-radius: 20px;
   border: 2px solid gray;
 }
-
+.box3 {
+    margin: 20px;
+    align-items: center;
+    justify-content: center;
+    display: inline-block;
+    border-color: #000;
+    background-color: black;
+    height: 260px;
+    width: 540px;
+    color: #000;
+    border-radius: 20px;
+    border: 2px solid gray;
+}
 .background {
   padding: 7px;
   background-color: #000;
