@@ -25,35 +25,35 @@ export default {
       })
   },
   methods: {
-				// Função para identifica o ID
-				identificarID(id: number) {
-					if (id === null){
-						return 'Informação invalida'
-					} else {
-						return id
-					}
-				},
-				// Função para identificar a Quantidade
-				identificarQuantidadde(quantidade: number) {
-					if (quantidade === null){
-						return 'Não registrado pela I.A.'
-					} else {
-						return quantidade
-					}
-				},
-				// Função para identificar o Horario
-				identifiacarHorario(horario: Date) {
-					if (horario === null){
-						return 'Não regista pela I.A.'
-					} else{
-						return horario
-					}
-				},
+    // Função para identifica o ID
+    identificarID(id: number) {
+      if (id === null) {
+        return 'Informação invalida'
+      } else {
+        return id
+      }
+    },
+    // Função para identificar a Quantidade
+    identificarQuantidadde(quantidade: number) {
+      if (quantidade === null) {
+        return 'Não registrado pela I.A.'
+      } else {
+        return quantidade
+      }
+    },
+    // Função para identificar o Horario
+    identifiacarHorario(horario: Date) {
+      if (horario === null) {
+        return 'Não regista pela I.A.'
+      } else {
+        return horario
+      }
+    },
     // Função para identificar entrada e saída
     identificarEntradaSaida(status: string) {
       return status === 'Entrada' ? 'Entrada' : 'Saída'
     },
-				// Função para identificar se a observação é full ou null
+    // Função para identificar se a observação é full ou null
     identificarObservacao(obs: string | null) {
       if (obs === null || obs === '') {
         return 'Null'
@@ -61,20 +61,20 @@ export default {
         return 'Full'
       }
     },
-				identifacarSala(sala: string){
-					if (sala === null) {
-						return 'Erro no sistema'
-					} else{
-						return sala
-					}
-				},
-				identificarMovDia(movDia: number) {
-					if (movDia === null) {
-						return 'Erro no sistema'
-					} else {
-						return movDia
-					}
-				}
+    identifacarSala(sala: string) {
+      if (sala === null) {
+        return 'Erro no sistema'
+      } else {
+        return sala
+      }
+    },
+    identificarMovDia(movDia: number) {
+      if (movDia === null) {
+        return 'Erro no sistema'
+      } else {
+        return movDia
+      }
+    }
   }
 }
 </script>
@@ -116,18 +116,7 @@ export default {
         <div></div>
       </div>
       <div class="box2">
-        <table class="center">
-          <br /><br />
-          <tr>
-            <th>Sala</th>
-            <th>Movimentação do Dia</th>
-          </tr>
-										<!-- Loop através dos dados do backend -->
-          <tr>
-            <td class="sala">{{identifacarSala(item.Sala)}}</td>
-            <td class="movDia">{{	identificarMovDia(item.movDia) }}</td>
-          </tr>
-        </table>
+        <p>gráfico</p>
       </div>
     </div>
     <div class="center">
@@ -138,8 +127,7 @@ export default {
           <p>0</p>
         </label>
       </div>
-      <div class="box1">
-        <img class="img" src="../../Cam.ico" alt="" />
+      <div class="box1" style="background-color: black;">
       </div>
     </div>
   </div>
@@ -297,4 +285,5 @@ tr:nth-child(even) {
   justify-content: center;
   align-items: center;
 }
-</style>: any: any
+</style>
+: any: any
