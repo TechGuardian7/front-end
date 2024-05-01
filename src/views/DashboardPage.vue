@@ -5,7 +5,6 @@
 <!-- chamar a id de horario-->
 <script lang="ts">
 import axios from 'axios'
-
 export default {
   data() {
     return {
@@ -60,20 +59,6 @@ export default {
       } else {
         return 'Full'
       }
-    },
-    identifacarSala(sala: string) {
-      if (sala === null) {
-        return 'Erro no sistema'
-      } else {
-        return sala
-      }
-    },
-    identificarMovDia(movDia: number) {
-      if (movDia === null) {
-        return 'Erro no sistema'
-      } else {
-        return movDia
-      }
     }
   }
 }
@@ -83,9 +68,7 @@ export default {
   <div class="sideMenu">
     <aside>
       <button type="button" class="button"><a href="#">Home</a></button>
-      <button type="button" class="button">
-        <a href="/controle-acesso">Controle de acesso</a>
-      </button>
+      <button type="button" class="button"><a href="/controle-acesso">Controle de acesso</a></button>
       <button type="button" class="button"><a href="/relatorios">Relatórios</a></button>
       <button type="button" class="button"><a href="/monitor-acesso">Monitor de acesso</a></button>
       <button type="button" class="button"><a href="/cadastro">Cadastros</a></button>
@@ -216,18 +199,19 @@ tr:nth-child(even) {
 }
 
 .box1 {
-  margin: 20px;
-  align-items: center;
-  justify-content: center;
-  display: inline-block;
-  border-color: #000;
-  background-color: white;
-  height: 260px;
-  width: 540px;
-  color: #000;
-  border-radius: 20px;
-  border: 2px solid gray;
-}
+    margin: 20px;
+    align-items: center;
+    justify-content: center;
+    display: inline-block;
+    border-color: #000;
+    background-color: white;
+    height: 260px;
+    width: 540px;
+    color: #000;
+    border-radius: 20px;
+    border: 2px solid gray;
+  }
+
 .box2 {
   margin: 20px;
   align-items: center;
@@ -275,6 +259,7 @@ tr:nth-child(even) {
 }
 
 .center {
+  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -286,4 +271,3 @@ tr:nth-child(even) {
   align-items: center;
 }
 </style>
-: any: any

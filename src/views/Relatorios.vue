@@ -19,11 +19,90 @@ export default {
     </aside>
   </div>
   <div class="center">
-    <h3 class="center">Relatórios</h3>
+    <div class="box1">
+      <button class="button2">Relatorio</button>
+      <div class="style">
+        <h4>Selecione o ano:</h4>
+        <select class="input1 space" aria-label="small select example">
+          <option selected></option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+      <div class="style">
+        <h4>Selecione o ano:</h4>
+        <select class="input1 space" aria-label="small select example">
+          <option selected></option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>      </div>
+        <div class="style">
+        <div>
+          <h4>Horario de Entreda:</h4>
+        <input type="search" class="input2 ">
+        </div>
+        <div>
+          <h4 class="space">Horario de Saida:</h4>
+          <input type="search" class="input2 space">
+        </div>
+      </div>
+      <div class="style">
+        <div>
+          <h4>Nome da Redzone:</h4>
+        <input type="search" class="input2">
+        </div>
+        <div>
+          <h4 class="space">Observação:</h4>
+          <input type="search" class="input2 space">
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="style">
+        <button class=" button2 space">CSV</button>
+        <button class="button3 space">PDF</button>
+      </div>
+    </div>
   </div>
 </template>
 
 <style>
+.input1{
+  width: 150px;
+  height: 35px;
+}
+.input2{
+  width: 400px;
+  height: 50px;
+  border-radius: 10px;
+  font-size: 20px;
+}
+.style{
+  align-items:center;
+  display: flex;
+  flex-direction: row;
+}
+.space{
+  margin-left: 250px
+}
+.box1 {
+  margin: 20px;
+  align-items: center;
+  justify-content: center;
+  display: inline-block;
+  border-color: #000;
+  height: 600px;
+  width: 1100px;
+  color: #000;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: left;
+}
 .sideMenu {
   background-color: #5291d6;
   min-height: 728px;
@@ -40,7 +119,24 @@ export default {
   font-size: 20px;
   border: none;
 }
-
+.button2{
+  background-color: #1DA4FB;
+  color: #FCFCFC;
+  border-radius: 15px;
+  font-size: 20px;
+  height: 47px;
+  width: 150px;
+  border-color: #000;
+}
+.button3{
+  background-color: #FF0000;
+  color: #FCFCFC;
+  border-radius: 15px;
+  font-size: 20px;
+  height: 47px;
+  width: 150px;
+  border-color: #000;
+}
 .button > a {
   text-decoration: none;
   color: #fff;
