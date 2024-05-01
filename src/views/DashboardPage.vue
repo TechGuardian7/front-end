@@ -1,7 +1,26 @@
 <!-- eslint-disable vue/no-unused-components -->
 <!-- eslint-disable @typescript-eslint/no-unused-vars -->
 <script lang="ts">
+import axios from 'axios';
+
 export default {
+  data() {
+    return {
+      dadosDoBackend: null
+    };
+  },
+  created() {
+    // Fazendo uma requisição GET para o endpoint do backend
+    axios.get('http://endereco-do-backend/api/dados')
+      .then(response => {
+        // Armazenando os dados recebidos do backend
+        this.dadosDoBackend = response.data;
+      })
+      .catch(error => {
+        console.error('Erro ao buscar dados do backend:', error);
+      });
+    },
+
   components: {
 		}
 }
@@ -26,36 +45,36 @@ export default {
           <tr>
             <th>Cam ID</th>
             <th>Quantidade</th>
-            <th>Status</th>
             <th>Horario</th>
+            <th>Status</th>
             <th>Observação</th>
           </tr>
           <tr>
             <td>Nome da Sala</td>
             <td>10 Pessoas</td>
-            <td class="red">Saida</td>
             <td>13:00</td>
+            <td class="red">Saida</td>
             <td></td>
           </tr>
           <tr>
             <td>Nome da Sala</td>
             <td>10 Pessoas</td>
-            <td class="green">Entrada</td>
             <td>11:00</td>
+            <td class="green">Entrada</td>
             <td></td>
           </tr>
           <tr>
             <td>Nome da Sala</td>
             <td>03 Pessoas</td>
-            <td class="red">Saida</td>
             <td>7:00</td>
+            <td class="red">Saida</td>
             <td></td>
           </tr>
           <tr>
             <td>Nome da Sala</td>
             <td>02 Pessoas</td>
-            <td class="green">Entrada</td>
             <td>6:00</td>
+            <td class="green">Entrada</td>
             <td></td>
           </tr>
         </table>
@@ -184,19 +203,19 @@ tr:nth-child(even) {
   border: 1px solid #ccc;
 }
 
-.box1 {
-  margin: 20px;
-  align-items: center;
-  justify-content: center;
-  display: inline-block;
-  border-color: #000;
-  background-color: white;
-  height: 260px;
-  width: 540px;
-  color: #000;
-  border-radius: 20px;
-  border: 2px solid gray;
-}
+  .box1 {
+    margin: 20px;
+    align-items: center;
+    justify-content: center;
+    display: inline-block;
+    border-color: #000;
+    background-color: white;
+    height: 260px;
+    width: 540px;
+    color: #000;
+    border-radius: 20px;
+    border: 2px solid gray;
+  }
 .box2 {
   margin: 20px;
   align-items: center;
