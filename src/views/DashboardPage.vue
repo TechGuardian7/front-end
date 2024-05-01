@@ -1,9 +1,66 @@
 <!-- eslint-disable vue/no-unused-components -->
 <!-- eslint-disable @typescript-eslint/no-unused-vars -->
+<!-- chamar a id de identifação-->
+<!-- chamar a id de quantidade-->
+<!-- chamar a id de horario-->
 <script lang="ts">
+import axios from 'axios'
 export default {
-  components: {
-		}
+  data() {
+    return {
+      dadosDoBackend: null
+    }
+  },
+  created() {
+    // Fazendo uma requisição GET para o endpoint do backend
+    axios
+      .get('http://localhost:8080/registro')
+      .then((response) => {
+        // Armazenando os dados recebidos do backend
+        this.dadosDoBackend = response.data
+      })
+      .catch((error: any) => {
+        console.error('Erro ao buscar dados do backend:', error)
+      })
+  },
+  methods: {
+    // Função para identifica o ID
+    identificarID(id: number) {
+      if (id === null) {
+        return 'Informação invalida'
+      } else {
+        return id
+      }
+    },
+    // Função para identificar a Quantidade
+    identificarQuantidadde(quantidade: number) {
+      if (quantidade === null) {
+        return 'Não registrado pela I.A.'
+      } else {
+        return quantidade
+      }
+    },
+    // Função para identificar o Horario
+    identifiacarHorario(horario: Date) {
+      if (horario === null) {
+        return 'Não regista pela I.A.'
+      } else {
+        return horario
+      }
+    },
+    // Função para identificar entrada e saída
+    identificarEntradaSaida(status: string) {
+      return status === 'Entrada' ? 'Entrada' : 'Saída'
+    },
+    // Função para identificar se a observação é full ou null
+    identificarObservacao(obs: string | null) {
+      if (obs === null || obs === '') {
+        return 'Null'
+      } else {
+        return 'Full'
+      }
+    }
+  }
 }
 </script>
 
@@ -26,65 +83,23 @@ export default {
           <tr>
             <th>Cam ID</th>
             <th>Quantidade</th>
-            <th>Status</th>
             <th>Horario</th>
+            <th>Status</th>
             <th>Observação</th>
           </tr>
-          <tr>
-            <td>Nome da Sala</td>
-            <td>10 Pessoas</td>
-            <td class="red">Saida</td>
-            <td>13:00</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Nome da Sala</td>
-            <td>10 Pessoas</td>
-            <td class="green">Entrada</td>
-            <td>11:00</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Nome da Sala</td>
-            <td>03 Pessoas</td>
-            <td class="red">Saida</td>
-            <td>7:00</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Nome da Sala</td>
-            <td>02 Pessoas</td>
-            <td class="green">Entrada</td>
-            <td>6:00</td>
-            <td></td>
+          <!-- Loop através dos dados do backend -->
+          <tr v-for="(item, index) in dadosDoBackend" :key="index">
+            <td class="id">{{ identificarId(item.id) }}</td>
+            <td class="quantidade">{{ identificarQuantidadde(item.quantidade) }}</td>
+            <td class="hora">{{ identifiacarHorario(item.horario) }}</td>
+            <td class="status">{{ identificarEntradaSaida(item.status) }}</td>
+            <td class="observacao">{{ identificarObservacao(item.observacao) }}</td>
           </tr>
         </table>
         <div></div>
       </div>
       <div class="box2">
-        <table class="center">
-          <br /><br />
-          <tr>
-            <th>Sala</th>
-            <th>Movimentação do Dia</th>
-          </tr>
-          <tr>
-            <td>Nome da Sala</td>
-            <td>10</td>
-          </tr>
-          <tr>
-            <td>Nome da Sala</td>
-            <td>5</td>
-          </tr>
-          <tr>
-            <td>Nome da Sala</td>
-            <td>3</td>
-          </tr>
-          <tr>
-            <td>Nome da Sala</td>
-            <td>2</td>
-          </tr>
-        </table>
+        <p>gráfico</p>
       </div>
     </div>
     <div class="center">
@@ -95,7 +110,7 @@ export default {
           <p>0</p>
         </label>
       </div>
-      <div class="box3">
+      <div class="box1" style="background-color: black;">
       </div>
     </div>
   </div>
@@ -184,18 +199,19 @@ tr:nth-child(even) {
 }
 
 .box1 {
-  margin: 20px;
-  align-items: center;
-  justify-content: center;
-  display: inline-block;
-  border-color: #000;
-  background-color: white;
-  height: 260px;
-  width: 540px;
-  color: #000;
-  border-radius: 20px;
-  border: 2px solid gray;
-}
+    margin: 20px;
+    align-items: center;
+    justify-content: center;
+    display: inline-block;
+    border-color: #000;
+    background-color: white;
+    height: 260px;
+    width: 540px;
+    color: #000;
+    border-radius: 20px;
+    border: 2px solid gray;
+  }
+
 .box2 {
   margin: 20px;
   align-items: center;
@@ -255,6 +271,7 @@ tr:nth-child(even) {
 }
 
 .center {
+  
   display: flex;
   justify-content: center;
   align-items: center;
