@@ -9,20 +9,19 @@ export default {
   <div class="sideMenu">
     <aside>
       <button type="button" class="button"><a href="/dashboard">Home</a></button>
-      <button type="button" class="button">
-        <a href="/controle-acesso">Controle de acesso</a>
-      </button>
-      <button type="button" class="button"><a href="#">Relatórios</a></button>
+      <button type="button" class="button"><a href="/controle-acesso">Controle de acesso</a></button>
+      <button type="button" class="button"><a href="/#">Relatórios</a></button>
       <button type="button" class="button"><a href="/monitor-acesso">Monitor de acesso</a></button>
       <button type="button" class="button"><a href="/cadastro">Cadastros</a></button>
       <button type="button" class="button"><a href="/configuracao">Configuração</a></button>
+      <button type="button" class="button"><a href="/registroEntrada">Registros</a></button>
     </aside>
   </div>
   <div class="center">
     <div class="box1">
       <button class="button2">Relatorio</button>
       <div class="style">
-        <h4>Selecione o ano:</h4>
+        <h4>Data Inicial:</h4>
         <select class="input1 space" aria-label="small select example">
           <option selected></option>
           <option value="1">One</option>
@@ -31,7 +30,7 @@ export default {
         </select>
       </div>
       <div class="style">
-        <h4>Selecione o ano:</h4>
+        <h4>Data Final:</h4>
         <select class="input1 space" aria-label="small select example">
           <option selected></option>
           <option value="1">One</option>
@@ -40,7 +39,7 @@ export default {
         </select>      </div>
         <div class="style">
         <div>
-          <h4>Horario de Entreda:</h4>
+          <h4>Horario de Entrada:</h4>
         <input type="search" class="input2 ">
         </div>
         <div>
@@ -48,16 +47,10 @@ export default {
           <input type="search" class="input2 space">
         </div>
       </div>
-      <div class="style">
-        <div>
-          <h4>Nome da Redzone:</h4>
-        <input type="search" class="input2">
-        </div>
-        <div>
-          <h4 class="space">Observação:</h4>
-          <input type="search" class="input2 space">
-        </div>
-      </div>
+      <br>
+      <br>
+      <br>
+      <br>
       <br>
       <br>
       <div class="style">
@@ -85,7 +78,7 @@ export default {
   flex-direction: row;
 }
 .space{
-  margin-left: 250px
+  margin-left: 260px
 }
 .box1 {
   margin: 20px;

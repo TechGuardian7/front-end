@@ -14,6 +14,7 @@ export default {
       <button type="button" class="button"><a href="/monitor-acesso">Monitor de acesso</a></button>
       <button type="button" class="button"><a href="/cadastro">Cadastros</a></button>
       <button type="button" class="button"><a href="/configuracao">Configuração</a></button>
+      <button type="button" class="button"><a href="/registroEntrada">Registros</a></button>
     </aside>
   </div>
   <div class="center">

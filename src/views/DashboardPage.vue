@@ -73,10 +73,11 @@ export default {
       <button type="button" class="button"><a href="/monitor-acesso">Monitor de acesso</a></button>
       <button type="button" class="button"><a href="/cadastro">Cadastros</a></button>
       <button type="button" class="button"><a href="/configuracao">Configuração</a></button>
+      <button type="button" class="button"><a href="/registroEntrada">Registros</a></button>
     </aside>
   </div>
   <div>
-    <div class="center">
+    <div class="center1">
       <div class="box1">
         <h3 class="center">Monitoramento</h3>
         <table class="center">
@@ -99,18 +100,29 @@ export default {
         <div></div>
       </div>
       <div class="box2">
-        <p>gráfico</p>
+        <h3 class="center">Grafico dos Ultimos 7 dias</h3>
+        <p>Gráfico de Linha</p>
       </div>
     </div>
-    <div class="center">
-      <div class="box2">
-        <br /><br />
-        <h3 class="center">Pessoas na RedZone</h3>
-        <label for="" class="center padding">
-          <p>0</p>
-        </label>
+    <div class="center1">
+      <div class="box4">
+        <h3 class="center">Movimentação</h3>
+        <table class="center">
+          <tr>
+            <th>Tempo real</th>
+            <th>Movimentação total do dia</th>
+          </tr>
+          <!-- Loop através dos dados do backend -->
+          <tr v-for="(item, index) in dadosDoBackend" :key="index">
+            <td class="id">{{ identificarId(item.id) }}</td>
+            <td class="quantidade">{{ identificarQuantidadde(item.quantidade) }}</td>
+            <td class="hora">{{ identifiacarHorario(item.horario) }}</td>
+            <td class="status">{{ identificarEntradaSaida(item.status) }}</td>
+            <td class="observacao">{{ identificarObservacao(item.observacao) }}</td>
+          </tr>
+        </table>
       </div>
-      <div class="box1" style="background-color: black;">
+      <div class="box3">
       </div>
     </div>
   </div>
@@ -199,44 +211,59 @@ tr:nth-child(even) {
 }
 
 .box1 {
-    margin: 20px;
-    align-items: center;
-    justify-content: center;
-    display: inline-block;
-    border-color: #000;
-    background-color: white;
-    height: 260px;
-    width: 540px;
-    color: #000;
-    border-radius: 20px;
-    border: 2px solid gray;
-  }
-
-.box2 {
-  margin: 20px;
+  margin: 5px;
   align-items: center;
   justify-content: center;
   display: inline-block;
   border-color: #000;
   background-color: white;
-  height: 260px;
-  width: 350px;
+  height: 210px;
+  width: 80vh;
+  color: #000;
+  border-radius: 20px;
+  border: 2px solid gray;
+}
+
+.box2 {
+  margin: 5px;
+  align-items: center;
+  justify-content: center;
+  display: inline-block;
+  border-color: #000;
+  background-color: white;
+  height: 210px;
+  width: 80vh;
   color: #000;
   border-radius: 20px;
   border: 2px solid gray;
 }
 .box3 {
-    margin: 20px;
-    align-items: center;
-    justify-content: center;
-    display: inline-block;
-    border-color: #000;
-    background-color: black;
-    height: 260px;
-    width: 540px;
-    color: #000;
-    border-radius: 20px;
-    border: 2px solid gray;
+  margin: 5px;
+  align-items: center;
+  justify-content: center;
+  display: inline-block;
+  border-color: #000;
+  background-color: black;
+  height: 50vh;
+  width: 80vh;
+  color: #000;
+  border-radius: 20px;
+  border: 2px solid gray;
+
+}
+
+.box4{
+  margin: 5px;
+  align-items: start;
+  justify-content: start;
+  display: inline-block;
+  border-color: #000;
+  background-color: white;
+  height: 50vh;
+  width: 80vh;
+  color: #000;
+  border-radius: 20px;
+  border: 2px solid gray;
 }
 .background {
   padding: 7px;
@@ -275,6 +302,11 @@ tr:nth-child(even) {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.center1{
+  display: flex;
+  justify-content: start;
+  align-items: start;
 }
 
 .icon {
