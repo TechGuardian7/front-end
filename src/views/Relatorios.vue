@@ -9,7 +9,9 @@ export default {
   <div class="sideMenu">
     <aside>
       <button type="button" class="button"><a href="/dashboard">Home</a></button>
-      <button type="button" class="button"><a href="/controle-acesso">Controle de acesso</a></button>
+      <button type="button" class="button">
+        <a href="/controle-acesso">Controle de acesso</a>
+      </button>
       <button type="button" class="button"><a href="/#">Relatórios</a></button>
       <button type="button" class="button"><a href="/monitor-acesso">Monitor de acesso</a></button>
       <button type="button" class="button"><a href="/cadastro">Cadastros</a></button>
@@ -36,25 +38,26 @@ export default {
           <option value="1">One</option>
           <option value="2">Two</option>
           <option value="3">Three</option>
-        </select>      </div>
-        <div class="style">
+        </select>
+      </div>
+      <div class="style">
         <div>
           <h4>Horario de Entrada:</h4>
-        <input type="search" class="input2 ">
+          <input type="search" class="input2" />
         </div>
         <div>
           <h4 class="space">Horario de Saida:</h4>
-          <input type="search" class="input2 space">
+          <input type="search" class="input2 space" />
         </div>
       </div>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <div class="style">
-        <button class=" button2 space">CSV</button>
+        <button class="button2 space">CSV</button>
         <button class="button3 space">PDF</button>
       </div>
     </div>
@@ -62,23 +65,23 @@ export default {
 </template>
 
 <style>
-.input1{
+.input1 {
   width: 150px;
   height: 35px;
 }
-.input2{
+.input2 {
   width: 400px;
   height: 50px;
   border-radius: 10px;
   font-size: 20px;
 }
-.style{
-  align-items:center;
+.style {
+  align-items: center;
   display: flex;
   flex-direction: row;
 }
-.space{
-  margin-left: 260px
+.space {
+  margin-left: 260px;
 }
 .box1 {
   margin: 20px;
@@ -112,18 +115,18 @@ export default {
   font-size: 20px;
   border: none;
 }
-.button2{
-  background-color: #1DA4FB;
-  color: #FCFCFC;
+.button2 {
+  background-color: #1da4fb;
+  color: #fcfcfc;
   border-radius: 15px;
   font-size: 20px;
   height: 47px;
   width: 150px;
   border-color: #000;
 }
-.button3{
-  background-color: #FF0000;
-  color: #FCFCFC;
+.button3 {
+  background-color: #ff0000;
+  color: #fcfcfc;
   border-radius: 15px;
   font-size: 20px;
   height: 47px;

@@ -1,132 +1,129 @@
-<!-- eslint-disable vue/no-unused-components -->
-<!-- eslint-disable @typescript-eslint/no-unused-vars -->
-<!-- chamar a id de identifação-->
-<!-- chamar a id de quantidade-->
-<!-- chamar a id de horario-->
-<script lang="ts">
-import axios from 'axios'
-export default {
-  data() {
-    return {
-      dadosDoBackend: null
-    }
-  },
-  created() {
-    // Fazendo uma requisição GET para o endpoint do backend
-    axios
-      .get('http://localhost:8080/registro')
-      .then((response) => {
-        // Armazenando os dados recebidos do backend
-        this.dadosDoBackend = response.data
-      })
-      .catch((error: any) => {
-        console.error('Erro ao buscar dados do backend:', error)
-      })
-  },
-  methods: {
-    // Função para identifica o ID
-    identificarID(id: number) {
-      if (id === null) {
-        return 'Informação invalida'
-      } else {
-        return id
-      }
-    },
-    // Função para identificar a Quantidade
-    identificarQuantidadde(quantidade: number) {
-      if (quantidade === null) {
-        return 'Não registrado pela I.A.'
-      } else {
-        return quantidade
-      }
-    },
-    // Função para identificar o Horario
-    identifiacarHorario(horario: Date) {
-      if (horario === null) {
-        return 'Não regista pela I.A.'
-      } else {
-        return horario
-      }
-    },
-    // Função para identificar entrada e saída
-    identificarEntradaSaida(status: string) {
-      return status === 'Entrada' ? 'Entrada' : 'Saída'
-    },
-    // Função para identificar se a observação é full ou null
-    identificarObservacao(obs: string | null) {
-      if (obs === null || obs === '') {
-        return 'Null'
-      } else {
-        return 'Full'
-      }
-    }
-  }
-}
-</script>
-
 <template>
   <div class="sideMenu">
     <aside>
       <button type="button" class="button"><a href="#">Home</a></button>
-      <button type="button" class="button"><a href="/controle-acesso">Controle de acesso</a></button>
+      <button type="button" class="button">
+        <a href="/controle-acesso">Controle de acesso</a>
+      </button>
       <button type="button" class="button"><a href="/relatorios">Relatórios</a></button>
       <button type="button" class="button"><a href="/monitor-acesso">Monitor de acesso</a></button>
       <button type="button" class="button"><a href="/cadastro">Cadastros</a></button>
       <button type="button" class="button"><a href="/configuracao">Configuração</a></button>
-      <button type="button" class="button"><a href="/registroEntrada">Registros</a></button>
+      <button type="button" class="button"><a href="/registros">Registros</a></button>
     </aside>
   </div>
   <div>
     <div class="center1">
       <div class="box1">
         <h3 class="center">Monitoramento</h3>
-        <table class="center">
-          <tr>
-            <th>Cam ID</th>
-            <th>Quantidade</th>
-            <th>Horario</th>
-            <th>Status</th>
-            <th>Observação</th>
-          </tr>
-          <!-- Loop através dos dados do backend -->
-          <tr v-for="(item, index) in dadosDoBackend" :key="index">
-            <td class="id">{{ identificarId(item.id) }}</td>
-            <td class="quantidade">{{ identificarQuantidadde(item.quantidade) }}</td>
-            <td class="hora">{{ identifiacarHorario(item.horario) }}</td>
-            <td class="status">{{ identificarEntradaSaida(item.status) }}</td>
-            <td class="observacao">{{ identificarObservacao(item.observacao) }}</td>
-          </tr>
+        <table class="center2">
+          <thead>
+            <tr>
+              <th>Cam ID</th>
+              <th>Data</th>
+              <th>Horário</th>
+              <th>Quantidade</th>
+              <th>Status</th>
+              <th>Observação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="entrada in dadosEntrada" :key="entrada.id">
+              <td class="ID">{{ entrada.id }}</td>
+              <td class="Data">{{ entrada.dataEntrada }}</td>
+              <td class="Horas">{{ entrada.horaEntrada }}</td>
+              <td class="Quantidade">{{ entrada.quantEntrada }}</td>
+              <td class="Observacao">{{ entrada.obsEntrada }}</td>
+            </tr>
+            <tr v-for="saida in dadosSaida" :key="saida.id">
+              <td class="ID">{{ saida.id }}</td>
+              <td class="Data">{{ saida.dataSaida }}</td>
+              <td class="Horas">{{ saida.horaSaida }}</td>
+              <td class="Quantidade">{{ saida.quantSaida }}</td>
+              <td class="Observacao">{{ saida.obsSaida }}</td>
+            </tr>
+          </tbody>
         </table>
         <div></div>
       </div>
       <div class="box2">
-        <h3 class="center">Grafico dos Ultimos 7 dias</h3>
+        <h3 class="center">Gráfico dos Últimos 7 dias</h3>
         <p>Gráfico de Linha</p>
       </div>
     </div>
     <div class="center1">
       <div class="box4">
         <h3 class="center">Movimentação</h3>
-        <table class="center">
-          <tr>
-            <th>Tempo real</th>
-            <th>Movimentação total do dia</th>
-          </tr>
-          <!-- Loop através dos dados do backend -->
-          <tr v-for="(item, index) in dadosDoBackend" :key="index">
-            <td class="id">{{ identificarId(item.id) }}</td>
-            <td class="quantidade">{{ identificarQuantidadde(item.quantidade) }}</td>
-            <td class="hora">{{ identifiacarHorario(item.horario) }}</td>
-            <td class="status">{{ identificarEntradaSaida(item.status) }}</td>
-            <td class="observacao">{{ identificarObservacao(item.observacao) }}</td>
-          </tr>
+        <table class="center2">
+          <thead>
+            <tr>
+              <th>Tempo real</th>
+              <th>Quantidade de pessoas no Dia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="entrada in dadosEntrada" :key="entrada.id">
+              <td class="Data">{{ entrada.dataEntrada }}</td>
+              <td class="Hora">{{ entrada.horaEntrada }}</td>
+              <td class="Quantidade">{{ entrada.quantEntrada }}</td>
+            </tr>
+            <tr v-for="saida in dadosSaida" :key="saida.id">
+              <td class="Data">{{ saida.dataSaida }}</td>
+              <td class="Horas">{{ saida.horaSaida }}</td>
+              <td class="Quantidade">{{ saida.quantSaida }}</td>
+            </tr>
+          </tbody>
         </table>
       </div>
-      <div class="box3">
-      </div>
+      <div class="box3"></div>
     </div>
   </div>
 </template>
+
+<script lang="ts">
+import axios from 'axios'
+import type { AxiosResponse } from 'axios'
+
+interface DadosEntrada {
+  id: number
+  dataEntrada: string
+  horaEntrada: string
+  quantEntrada: number
+  obsEntrada: string
+}
+
+interface DadosSaida {
+  id: number
+  dataSaida: string
+  horaSaida: string
+  quantSaida: number
+  obsSaida: string
+}
+
+export default {
+  data() {
+    return {
+      dadosEntrada: [] as DadosEntrada[],
+      dadosSaida: [] as DadosSaida[]
+    }
+  },
+  mounted() {
+    axios
+      .get<DadosEntrada[]>('http://localhost:8080/registro/entrada')
+      .then((responseEntrada: AxiosResponse<DadosEntrada[]>) => {
+        this.dadosEntrada = responseEntrada.data
+
+        return axios.get<DadosSaida[]>('http://localhost:8080/registro/saida')
+      })
+      .then((responseSaida: AxiosResponse<DadosSaida[]>) => {
+        this.dadosSaida = responseSaida.data
+      })
+      .catch((error) => {
+        console.error('Erro ao buscar dados:', error)
+      })
+  }
+}
+</script>
 
 <style scoped>
 img {
@@ -145,21 +142,36 @@ img {
   color: white;
 }
 
-table {
-  font-family: arial, sans-serif;
+#tabela {
   border-collapse: collapse;
-  width: 100%;
+		margin: 50px;
 }
 
-td,
-th {
-  border: 1px solid #dddddd;
-  text-align: center;
+thead {
+  background-color: #f2f2f2;
+}
+
+th,
+td {
   padding: 8px;
+  border-bottom: 1px solid #ddd;
 }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
+tbody {
+  display: block;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+thead,
+tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
 
 .sideMenu {
@@ -190,7 +202,6 @@ tr:nth-child(even) {
 }
 
 .col {
-  table-layout: fixed;
   margin: 0px 10px 0px 10px;
   height: 40px;
   border-radius: 5px;
@@ -200,7 +211,6 @@ tr:nth-child(even) {
 }
 
 .col1 {
-  table-layout: fixed;
   background-color: #f3f6f9;
   margin: 0px 10px 0px 10px;
   height: 40px;
@@ -217,8 +227,8 @@ tr:nth-child(even) {
   display: inline-block;
   border-color: #000;
   background-color: white;
-  height: 210px;
-  width: 80vh;
+  height: 320px;
+  width: 84vh;
   color: #000;
   border-radius: 20px;
   border: 2px solid gray;
@@ -231,7 +241,7 @@ tr:nth-child(even) {
   display: inline-block;
   border-color: #000;
   background-color: white;
-  height: 210px;
+  height: 320px;
   width: 80vh;
   color: #000;
   border-radius: 20px;
@@ -244,22 +254,21 @@ tr:nth-child(even) {
   display: inline-block;
   border-color: #000;
   background-color: black;
-  height: 50vh;
-  width: 80vh;
+  height: 40vh;
+  width: 84vh;
   color: #000;
   border-radius: 20px;
   border: 2px solid gray;
-
 }
 
-.box4{
+.box4 {
   margin: 5px;
   align-items: start;
   justify-content: start;
   display: inline-block;
   border-color: #000;
   background-color: white;
-  height: 50vh;
+  height: 40vh;
   width: 80vh;
   color: #000;
   border-radius: 20px;
@@ -298,12 +307,11 @@ tr:nth-child(even) {
 }
 
 .center {
-  
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.center1{
+.center1 {
   display: flex;
   justify-content: start;
   align-items: start;

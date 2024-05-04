@@ -17,7 +17,6 @@ export default {
       <button type="button" class="button"><a href="#">Cadastros</a></button>
       <button type="button" class="button"><a href="/configuracao">Configuração</a></button>
       <button type="button" class="button"><a href="/registroEntrada">Registros</a></button>
-
     </aside>
   </div>
   <div class="center">
