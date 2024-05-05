@@ -48,7 +48,7 @@
       </div>
       <div class="box2">
         <h3 class="center">Gráfico dos Últimos 7 dias</h3>
-        <p>Gráfico de Linha</p>
+        <canvas id="line-chart" width="800" height="400"></canvas>
       </div>
     </div>
     <div class="center1">
@@ -82,6 +82,7 @@
 
 <script lang="ts">
 import axios from 'axios'
+import Chart from 'chart.js/auto'
 import type { AxiosResponse } from 'axios'
 
 interface DadosEntrada {
@@ -104,7 +105,8 @@ export default {
   data() {
     return {
       dadosEntrada: [] as DadosEntrada[],
-      dadosSaida: [] as DadosSaida[]
+      dadosSaida: [] as DadosSaida[],
+      chart: null as Chart | null
     }
   },
   mounted() {
@@ -117,10 +119,71 @@ export default {
       })
       .then((responseSaida: AxiosResponse<DadosSaida[]>) => {
         this.dadosSaida = responseSaida.data
+
+        const data = this.processData(this.dadosEntrada, this.dadosSaida)
+
+        this.renderChart(data)
       })
+
       .catch((error) => {
         console.error('Erro ao buscar dados:', error)
       })
+  },
+  methods:{
+    processData(entradas: DadosEntrada[], saidas: DadosSaida[]) {
+
+      const diasDaSemana = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado']
+
+      const data = {
+        labels: [] as string[],
+        datasets: [
+          {
+            label: 'Entradas',
+            data: [] as number[],
+            borderColor: 'blue',
+            fill:false
+          },
+          {
+            label: 'Saídas',
+            data: [] as number[],
+            borderColor: 'red',
+            fill:false
+          }
+        ]
+      }
+
+      const contagens: Record<string, { entradas:number, saidas: number }> = {}
+
+      for (let i = 0; i < 7; i++) {
+        contagens[diasDaSemana[i]] = {entradas: 0, saidas: 0 }
+      }
+
+      for (const saida of saidas) {
+        const data = new Date(saida.dataSaida)
+        const diaDaSemana = diasDaSemana[data.getDay()]
+        contagens[diaDaSemana].saidas += saida.quantSaida
+      }
+
+      for (const diaDaSemana of diasDaSemana) {
+        data.labels.push(diaDaSemana)
+        data.datasets[0].data.push(contagens[diaDaSemana].entradas)
+        data.datasets[1].data.push(contagens[diaDaSemana].saidas)
+      }
+
+      return data
+    },
+    renderChart(data: any) {
+      const ctx = document.getElementById('line-chart') as HTMLCanvasElement
+      if (ctx) {
+        this.chart = new Chart(ctx, {
+          type: 'line',
+          data,
+          option: {
+
+          }
+        })
+      } 
+    }
   }
 }
 </script>
@@ -228,7 +291,7 @@ tbody tr:nth-child(even) {
   border-color: #000;
   background-color: white;
   height: 320px;
-  width: 84vh;
+  width: 1000px;
   color: #000;
   border-radius: 20px;
   border: 2px solid gray;
@@ -242,7 +305,7 @@ tbody tr:nth-child(even) {
   border-color: #000;
   background-color: white;
   height: 320px;
-  width: 80vh;
+  width: 400px;
   color: #000;
   border-radius: 20px;
   border: 2px solid gray;
