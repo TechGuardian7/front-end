@@ -9,7 +9,7 @@
       <button type="button" class="button"><a href="/monitor-acesso">Monitor de acesso</a></button>
       <button type="button" class="button"><a href="/cadastro">Cadastros</a></button>
       <button type="button" class="button"><a href="/configuracao">Configuração</a></button>
-      <button type="button" class="button"><a href="/registros">Registros</a></button>
+      <button type="button" class="button"><a href="/registroEntrada">Registros</a></button>
     </aside>
   </div>
   <div>
@@ -19,7 +19,7 @@
         <table class="center2">
           <thead>
             <tr>
-              <th>Cam ID</th>
+              <th>Ent/Sai ID</th>
               <th>Data</th>
               <th>Horário</th>
               <th>Quantidade</th>
@@ -48,7 +48,7 @@
       </div>
       <div class="box2">
         <h3 class="center">Gráfico dos Últimos 7 dias</h3>
-        <canvas id="line-chart" width="800" height="400"></canvas>
+        <canvas id="line-chart" width="800" height="260"></canvas>
       </div>
     </div>
     <div class="center1">
@@ -58,7 +58,7 @@
           <thead>
             <tr>
               <th>Tempo real</th>
-              <th>Quantidade de pessoas no Dia</th>
+              <th>Movimentação do Dia</th>
             </tr>
           </thead>
           <tbody>
@@ -178,7 +178,7 @@ export default {
         this.chart = new Chart(ctx, {
           type: 'line',
           data,
-          option: {
+          options: {
 
           }
         })
@@ -332,7 +332,7 @@ tbody tr:nth-child(even) {
   border-color: #000;
   background-color: white;
   height: 40vh;
-  width: 80vh;
+  width: 650px;
   color: #000;
   border-radius: 20px;
   border: 2px solid gray;
